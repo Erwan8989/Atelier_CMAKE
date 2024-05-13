@@ -1,4 +1,4 @@
-name: Run Tests
+name: Automatisation des tests et exécution
 
 on: [push, pull_request]
 
@@ -15,8 +15,9 @@ jobs:
           cmake ..
           make
           make test
-          
+
   Test_Add:
+    needs: Compilation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -30,6 +31,7 @@ jobs:
           ./src/calculator add 10 5
 
   Test_Sub:
+    needs: Compilation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -43,6 +45,7 @@ jobs:
           ./src/calculator sub 10 5
 
   Test_Mul:
+    needs: Compilation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -56,6 +59,7 @@ jobs:
           ./src/calculator mul 10 5
 
   Test_Div:
+    needs: Compilation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -69,6 +73,7 @@ jobs:
           ./src/calculator div 10 5
 
   Test_Car:
+    needs: Compilation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
