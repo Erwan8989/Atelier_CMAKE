@@ -87,6 +87,7 @@ jobs:
           ./src/calculator car 10
 
   Deploy:
+    needs: [Compilation, Test_Add, Test_Sub, Test_Mul, Test_Div, Test_Car]
     runs-on: ubuntu-latest
     steps:
       - name: Deploy step
