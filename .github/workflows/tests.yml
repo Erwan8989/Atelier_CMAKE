@@ -1,69 +1,62 @@
-name: Run Tests
+name: Automatisation des tests et exécution
 
 on: [push, pull_request]
 
 jobs:
-  Test_Add:
+  Compilation:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Build and test add function
+      - name: Compilation
         run: |
           mkdir build
           cd build
           cmake ..
           make
-          ./src/calculator add 10 5
+          make test
+
+  Test_Add:
+    needs: Compilation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Test add function
+        run: ./src/calculator add 10 5
 
   Test_Sub:
+    needs: Compilation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Build and test sub function
-        run: |
-          mkdir build
-          cd build
-          cmake ..
-          make
-          ./src/calculator sub 10 5
+      - name: Test sub function
+        run: ./src/calculator sub 10 5
 
   Test_Mul:
+    needs: Compilation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Build and test mul function
-        run: |
-          mkdir build
-          cd build
-          cmake ..
-          make
-          ./src/calculator mul 10 5
+      - name: Test mul function
+        run: ./src/calculator mul 10 5
 
   Test_Div:
+    needs: Compilation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Build and test div function
-        run: |
-          mkdir build
-          cd build
-          cmake ..
-          make
-          ./src/calculator div 10 5
+      - name: Test div function
+        run: ./src/calculator div 10 5
 
   Test_Car:
+    needs: Compilation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Build and test car function
-        run: |
-          mkdir build
-          cd build
-          cmake ..
-          make
-          ./src/calculator car 10
+      - name: Test car function
+        run: ./src/calculator car 10
