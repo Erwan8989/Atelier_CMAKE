@@ -8,67 +8,62 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Compile
+      - name: Build and test add function
         run: |
           mkdir build
           cd build
           cmake ..
           make
-      - name: Test add function
-        run: ./src/calculator add 10 5
+          ./src/calculator add 10 5
 
   Test_Sub:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Compile
+      - name: Build and test sub function
         run: |
           mkdir build
           cd build
           cmake ..
           make
-      - name: Test sub function
-        run: ./src/calculator sub 10 5
+          ./src/calculator sub 10 5
 
   Test_Mul:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Compile
+      - name: Build and test mul function
         run: |
           mkdir build
           cd build
           cmake ..
           make
-      - name: Test mul function
-        run: ./src/calculator mul 10 5
+          ./src/calculator mul 10 5
 
   Test_Div:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Compile
+      - name: Build and test div function
         run: |
           mkdir build
           cd build
           cmake ..
           make
-      - name: Test div function
-        run: ./src/calculator div 10 5
+          ./src/calculator div 10 5
 
   Test_Car:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Compile
+      - name: Build and test car function
         run: |
           mkdir build
           cd build
           cmake ..
           make
-      - name: Test car function
-        run: ./src/calculator car 10
+          ./src/calculator car 10
